@@ -1,1 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intelligence | PATTERNX</title>
 
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">PATTERNX</div>
+
+        <nav class="nav-section">
+
+            <div class="nav-label">Analysis</div>
+
+            <a href="index.html" class="nav-link">
+                <i class="fa-solid fa-gauge"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+
+            <a href="intelligence.html" class="nav-link">
+                <i class="fa-solid fa-brain"></i>
+                <span>Intelligence</span>
+            </a>
+
+            <div class="nav-label" style="margin-top:20px">Records</div>
+
+            <a href="archive.html" class="nav-link">
+                <i class="fa-solid fa-box-archive"></i>
+                <span>Case Archive</span>
+            </a>
+
+            <div class="nav-label" style="margin-top:20px">Resources</div>
+
+            <a href="help.html" class="nav-link">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>User Guide</span>
+            </a>
+
+            <a href="support.html" class="nav-link">
+                <i class="fa-solid fa-headset"></i>
+                <span>Support</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <header>
+            <div class="status-indicator">
+                ACTIVE HOTSPOT ALERTS
+            </div>
+        </header>
+
+        <div class="container">
+
+            <h1>
+                Behavioral
+                <span style="color:var(--accent)">
+                    Pattern Forecasting
+                </span>
+            </h1>
+
+            <p class="subtitle">
+                AI-assisted intelligence synthesis platform designed to identify
+                repeat incident activity, spatial clustering, and emerging public
+                safety threats.
+            </p>
+
+            <!-- MAIN ALERT CARD -->
+
+            <div class="card"
+            style="border-left:4px solid var(--accent); margin-bottom:24px;">
+
+                <span class="card-tag">
+                    HIGH-RISK BURGLARY ZONE IDENTIFIED
+                </span>
+
+                <h2 style="margin-top:16px;">
+                    Repeat Burglary Pattern Detected Near Commercial District
+                </h2>
+
+                <p style="margin-top:16px; color:var(--text-secondary); line-height:1.6;">
+                    PatternX detected increased burglary activity occurring between
+                    01:00–04:00 hours across poorly illuminated commercial corridors.
+                    Historical incident reports indicate a 42% increase in repeat
+                    offender proximity patterns within Sector 12.
+                </p>
+
+                <button class="btn"
+                onclick="alert('Crime Pattern Report Generated Successfully')">
+
+                    Generate Crime Pattern Report
+
+                </button>
+
+            </div>
+
+            <!-- GRID -->
+
+            <div class="grid cols-3">
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Temporal Incident Density
+                    </span>
+
+                    <div class="stat">
+                        04:32
+                    </div>
+
+                    <p>
+                        Highest recorded incident window
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Resource Deployment Window
+                    </span>
+
+                    <div class="stat">
+                        05:15
+                    </div>
+
+                    <p>
+                        Recommended patrol allocation shift
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Repeat Offender Probability
+                    </span>
+
+                    <div class="stat" style="color:var(--accent)">
+                        87%
+                    </div>
+
+                    <p>
+                        Elevated likelihood of recurring offender activity
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- AI SUMMARY -->
+
+            <div class="card" style="margin-top:24px;">
+
+                <span class="card-tag">
+                    AI Intelligence Summary
+                </span>
+
+                <p style="margin-top:16px; line-height:1.7; color:var(--text-secondary);">
+
+                    Machine-learning assisted trend analysis identified a statistically
+                    significant relationship between repeat burglary incidents,
+                    low-visibility infrastructure zones, and proximity to
+                    commercial transit corridors. Forecast modeling estimates a
+                    moderate escalation risk over the next 72 operational hours.
+
+                </p>
+
+            </div>
+
+            <!-- SECOND GRID -->
+
+            <div class="grid cols-2" style="margin-top:24px;">
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Threat Assessment
+                    </span>
+
+                    <div class="stat" style="color:var(--accent)">
+                        ELEVATED
+                    </div>
+
+                    <p>
+                        Increased monitoring recommended across identified sectors
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        System Activity
+                    </span>
+
+                    <div class="stat">
+                        1,482
+                    </div>
+
+                    <p>
+                        Active analytical nodes processing incident telemetry
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
