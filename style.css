@@ -71,12 +71,14 @@ body {
 /* Header */
 .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 header {
-    height: 64px;
-    padding: 0 32px;
+    header {
+    min-height: 64px;
+    padding: 16px 32px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-gap: 40px;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
     border-bottom: 1px solid var(--border);
 }
 
@@ -86,9 +88,10 @@ gap: 40px;
     border-radius: 4px;
     padding: 8px 12px;
     width: 250px;
-    margin-left: 120px;
     display: flex;
     align-items: center;
+    flex: 1;
+min-width: 280px;
 }
 .search-box input {
     background: transparent;
@@ -97,6 +100,7 @@ gap: 40px;
     margin-left: 10px;
     outline: none;
     width: 100%;
+
 }
 
 /* Page Containers */
