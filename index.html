@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATTERNX | Intelligence Analysis Platform</title>
+    <!-- Professional Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-base: #0a0a0b;
+            --bg-sidebar: #0f0f10;
+            --bg-card: #151517;
+            --accent: #e21d38;
+            --accent-muted: #8b1222;
+            --text-primary: #e4e4e7;
+            --text-secondary: #a1a1aa;
+            --border: #27272a;
+            --success: #22c55e;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            font-size: 14px;
+        }
+
+        /* --- Sidebar --- */
+        .sidebar {
+            width: 260px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .brand {
+            padding: 24px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #fff;
+            border-bottom: 1px solid var(--border);
+        }
+        .brand span { color: var(--accent); }
+
+        .nav-section { padding: 16px 0; flex: 1; overflow-y: auto; }
+        .nav-label {
+            padding: 0 24px 8px;
+            font-size: 11px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .nav-link {
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: 0.2s;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+        .nav-link i { margin-right: 12px; width: 18px; font-size: 1.1rem; }
+        .nav-link:hover { color: #fff; background: #1a1a1c; }
+        .nav-link.active {
+            color: #fff;
+            background: #1a1a1c;
+            border-left-color: var(--accent);
+        }
+
+        /* --- Main Layout --- */
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+        header {
+            height: 64px;
+            background: var(--bg-base);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+        }
+
+        .search-container {
+            position: relative;
+            width: 400px;
+        }
+        .search-container input {
+            width: 100%;
+            background: #1a1a1c;
+            border: 1px solid var(--border);
+            padding: 8px 12px 8px 36px;
+            border-radius: 6px;
+            color: #fff;
+            outline: none;
+        }
+        .search-container i { position: absolute; left: 12px; top: 10px; color: var(--text-secondary); }
+
+        .view-container {
+            flex: 1;
+            padding: 32px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Components --- */
+        .page-view { display: none; animation: fadeIn 0.3s ease; }
+        .page-view.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        .grid { display: grid; gap: 24px; margin-bottom: 24px; }
+        .cols-4 { grid-template-columns: repeat(4, 1fr); }
+        .cols-2 { grid-template-columns: 2fr 1fr; }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .card-header { display: flex; justify-content: space-between; margin-bottom: 16px; color: var(--text-secondary); font-size: 12px; font-weight: 600; text-transform: uppercase; }
+        
+        .stat-lg { font-size: 28px; font-weight: 700; color: #fff; }
+        .trend { font-size: 12px; margin-top: 4px; }
+        .trend.up { color: var(--success); }
+
+        .btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 13px;
+        }
+        .btn:hover { background: var(--accent-muted); }
+
+        /* --- Specialized Views --- */
+        .map-placeholder {
+            height: 400px;
+            background: #111 url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .status-pill {
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 10px;
+            font-weight: 700;
+            background: rgba(226, 29, 56, 0.1);
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+        th { text-align: left; padding: 12px; border-bottom: 1px solid var(--border); color: var(--text-secondary); font-size: 11px; text-transform: uppercase; }
+        td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--text-primary); }
+
+        /* --- Mobile --- */
+        @media (max-width: 1024px) {
+            .sidebar { width: 70px; }
+            .nav-label, .nav-link span, .brand span { display: none; }
+            .cols-4, .cols-2 { grid-template-columns: 1fr; }
+            .search-container { width: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="brand">PATTERN<span>X</span></div>
+        <nav class="nav-section">
+            <div class="nav-label">Operational</div>
+            <a class="nav-link active" onclick="navigate('dashboard')"><i class="fa-solid fa-gauge-high"></i> <span>Dashboard</span></a>
+            <a class="nav-link" onclick="navigate('mapping')"><i class="fa-solid fa-map-location-dot"></i> <span>Spatial Analysis</span></a>
+            <a class="nav-link" onclick="navigate('intelligence')"><i class="fa-solid fa-bolt"></i> <span>Risk Forecasting</span></a>
+            
+            <div class="nav-label" style="margin-top:20px">Data Records</div>
+            <a class="nav-link" onclick="navigate('archive')"><i class="fa-solid fa-database"></i> <span>Case Archive</span></a>
+            <a class="nav-link" onclick="navigate('files')"><i class="fa-solid fa-folder-tree"></i> <span>Case Files</span></a>
+            
+            <div class="nav-label" style="margin-top:20px">Support</div>
+            <a class="nav-link" onclick="navigate('help')"><i class="fa-solid fa-circle-info"></i> <span>User Guide</span></a>
+            <a class="nav-link" onclick="navigate('support')"><i class="fa-solid fa-headset"></i> <span>System Support</span></a>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <header>
+            <div class="search-container">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" placeholder="Search incidents, precincts, or case IDs...">
+            </div>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <span class="status-pill">UCR/NIBRS COMPLIANT</span>
+                <i class="fa-solid fa-bell" style="color: var(--text-secondary); cursor: pointer;"></i>
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: #333; border: 1px solid var(--accent);"></div>
+            </div>
+        </header>
+
+        <div class="view-container">
+            
+            <!-- DASHBOARD VIEW -->
+            <section id="dashboard" class="page-view active">
+                <h1 style="margin-bottom: 8px;">Intelligence Overview</h1>
+                <p style="color: var(--text-secondary); margin-bottom: 32px;">Real-time analysis of precinct reporting and emerging incident clusters.</p>
+                
+                <div class="grid cols-4">
+                    <div class="card">
+                        <div class="card-header">Reported Offenses (YTD)</div>
+                        <div class="stat-lg">1,482</div>
+                        <div class="trend up"><i class="fa-solid fa-caret-up"></i> 12.4% vs LY</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Clearance Rate</div>
+                        <div class="stat-lg">74.2%</div>
+                        <div style="color: var(--text-secondary); font-size: 12px;">Target: 80%</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Active Investigations</div>
+                        <div class="stat-lg">24</div>
+                        <div style="color: var(--accent); font-size: 12px; font-weight: 600;">3 High Priority</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Data Integrity</div>
+                        <div class="stat-lg">99.9%</div>
+                        <div style="color: var(--success); font-size: 12px;">Optimal Sync</div>
+                    </div>
+                </div>
+
+                <div class="grid cols-2">
+                    <div class="card">
+                        <div class="card-header">Incident Frequency Over Time</div>
+                        <div style="height: 200px; display: flex; align-items: flex-end; gap: 8px; padding-top: 20px;">
+                            <div style="flex:1; background: #27272a; height: 40%"></div>
+                            <div style="flex:1; background: #27272a; height: 60%"></div>
+                            <div style="flex:1; background: #27272a; height: 55%"></div>
+                            <div style="flex:1; background: var(--accent); height: 90%"></div>
+                            <div style="flex:1; background: #27272a; height: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">Recent Activity Log</div>
+                        <div style="font-size: 13px; line-height: 2;">
+                            <div style="border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+                                <span style="color: var(--accent)">14:22</span> Cluster ID #72 Identified
+                            </div>
+                            <div style="border-bottom: 1px solid var(--border); padding: 8px 0;">
+                                <span style="color: var(--text-secondary)">13:05</span> Forensic Report PX-8821 Exported
+                            </div>
+                            <div style="padding-top: 8px;">
+                                <span style="color: var(--text-secondary)">11:40</span> NIBRS Data Sync Complete
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SPATIAL ANALYSIS VIEW -->
+            <section id="mapping" class="page-view">
+                <h1 style="margin-bottom: 24px;">Spatial Incident Mapping</h1>
+                <div class="map-placeholder">
+                    <div style="text-align: center;">
+                        <i class="fa-solid fa-location-crosshairs" style="font-size: 40px; color: var(--accent); margin-bottom: 16px;"></i>
+                        <p>GIS Layer Loading: Metropolitan Sector 7</p>
+                    </div>
+                    <div style="position: absolute; bottom: 20px; left: 20px;" class="card">
+                        <div class="card-header">Map Layers</div>
+                        <div style="font-size: 12px;">
+                            <label><input type="checkbox" checked> Precinct Boundaries</label><br>
+                            <label><input type="checkbox" checked> Hotspot Heatmap</label><br>
+                            <label><input type="checkbox"> Census Tract Data</label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RISK FORECASTING VIEW -->
+            <section id="intelligence" class="page-view">
+                <h1 style="margin-bottom: 24px;">Predictive Risk Modeling</h1>
+                <div class="card" style="border-left: 4px solid var(--accent); margin-bottom: 24px;">
+                    <h3>Emerging Burglary Cluster: Industrial Sector</h3>
+                    <p style="margin-top: 8px; color: var(--text-secondary);">Statistical analysis identifies an 82% probability of recurring incidents within the next 48-hour window based on temporal sequence modeling.</p>
+                    <button class="btn" style="margin-top: 16px;" onclick="alert('Resources Dispatched to Sector 7')">Initiate Field Resource</button>
+                </div>
+                <div class="grid cols-4">
+                    <div class="card"><h4>Temporal Anomaly</h4><div class="stat-lg" style="color: var(--accent)">+12.4%</div></div>
+                    <div class="card"><h4>Confidence Interval</h4><div class="stat-lg">94.8%</div></div>
+                    <div class="card"><h4>Risk Level</h4><div class="stat-lg">Elevated</div></div>
+                    <div class="card"><h4>Model Vers.</h4><div class="stat-lg">v4.2.0</div></div>
+                </div>
+            </section>
+
+            <!-- CASE ARCHIVE VIEW -->
+            <section id="archive" class="page-view">
+                <h1>Historical Case Archive</h1>
+                <table>
+                    <thead>
+                        <tr><th>Case ID</th><th>Date</th><th>Offense Category</th><th>Precinct</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>PX-9042</td><td>2024-05-12</td><td>Financial Crimes</td><td>Precinct 01</td><td><span style="color: var(--accent)">Active</span></td></tr>
+                        <tr><td>PX-8821</td><td>2024-05-10</td><td>Cargo Theft</td><td>Precinct 09</td><td>Closed</td></tr>
+                        <tr><td>PX-8750</td><td>2024-05-08</td><td>Narcotics Distribution</td><td>Precinct 04</td><td>Pending Trial</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- CASE FILES VIEW -->
+            <section id="files" class="page-view">
+                <h1>Evidence Repository</h1>
+                <div class="grid cols-4" style="margin-top:20px">
+                    <div class="card" style="text-align: center; cursor: pointer;">
+                        <i class="fa-solid fa-file-pdf" style="font-size: 32px; margin-bottom: 12px;"></i>
+                        <p>Ballistics_Report_72.pdf</p>
+                    </div>
+                    <div class="card" style="text-align: center; cursor: pointer;">
+                        <i class="fa-solid fa-file-image" style="font-size: 32px; margin-bottom: 12px;"></i>
+                        <p>Scene_Photo_A1.jpg</p>
+                    </div>
+                    <div class="card" style="text-align: center; cursor: pointer;">
+                        <i class="fa-solid fa-file-video" style="font-size: 32px; margin-bottom: 12px;"></i>
+                        <p>CCTV_Footage_Primary.mp4</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- USER GUIDE VIEW -->
+            <section id="help" class="page-view">
+                <h1>System Documentation</h1>
+                <div class="grid cols-2" style="margin-top:20px">
+                    <div class="card">
+                        <h3>Statistical Methodology</h3>
+                        <p style="margin-top:12px; color: var(--text-secondary);">PATTERNX utilizes Kernel Density Estimation (KDE) for spatial hotspot identification and temporal regression for risk forecasting.</p>
+                    </div>
+                    <div class="card">
+                        <h3>NIBRS Reporting Guide</h3>
+                        <p style="margin-top:12px; color: var(--text-secondary);">Ensure all incident classifications align with the 2024 FBI Uniform Crime Reporting standards for valid statistical output.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SUPPORT VIEW -->
+            <section id="support" class="page-view">
+                <h1>Technical Support</h1>
+                <div class="card" style="max-width: 500px; margin-top:20px">
+                    <label>Issue Category</label><br>
+                    <select style="width:100%; padding:8px; background:#1a1a1c; border:1px solid var(--border); color:#fff; margin:10px 0;">
+                        <option>Data Sync Error</option>
+                        <option>GIS Layer Misalignment</option>
+                        <option>User Access Management</option>
+                    </select><br>
+                    <label>Description</label><br>
+                    <textarea style="width:100%; height:100px; background:#1a1a1c; border:1px solid var(--border); color:#fff; margin:10px 0;"></textarea>
+                    <button class="btn" onclick="alert('Ticket Submitted')">Submit Support Ticket</button>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <script>
+        function navigate(pageId) {
+            // Update Navigation Links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('onclick').includes(pageId)) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Update Visible View
+            document.querySelectorAll('.page-view').forEach(view => {
+                view.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
