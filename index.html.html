@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATTERNX | Evidence-Based Criminology</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-deep: #0a0a0a;
+            --bg-card: #141414;
+            --bg-sidebar: #0f0f0f;
+            --accent-red: #e21d38;
+            --accent-red-dim: #8b1222;
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0a0;
+            --border: #252525;
+            --font-mono: 'fira code', 'courier new', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            width: 240px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo-area {
+            padding: 0 20px 30px;
+            color: white;
+            font-weight: 900;
+            font-size: 1.4rem;
+            letter-spacing: -1px;
+        }
+        .logo-area span { color: var(--accent-red); }
+
+        .nav-group { margin-bottom: 30px; }
+        .nav-label {
+            padding: 0 20px 10px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            letter-spacing: 1px;
+        }
+
+        .nav-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+        .nav-item i { margin-right: 12px; width: 18px; }
+        .nav-item:hover, .nav-item.active {
+            background: rgba(226, 29, 56, 0.05);
+            color: white;
+            border-left-color: var(--accent-red);
+        }
+
+        /* --- MAIN CONTENT AREA --- */
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        header {
+            height: 60px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            background: var(--bg-deep);
+        }
+
+        .search-bar {
+            background: #1a1a1a;
+            border: 1px solid var(--border);
+            padding: 8px 15px;
+            border-radius: 4px;
+            width: 400px;
+            display: flex;
+            align-items: center;
+        }
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: white;
+            margin-left: 10px;
+            width: 100%;
+            outline: none;
+        }
+
+        .header-actions { display: flex; align-items: center; gap: 20px; color: var(--text-dim); }
+
+        .content-body {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        /* --- DASHBOARD COMPONENTS --- */
+        .grid { display: grid; gap: 20px; }
+        .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-2-1 { grid-template-columns: 2fr 1fr; }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stat-value { font-size: 2rem; font-weight: bold; margin-bottom: 5px; }
+        .stat-label { font-size: 0.75rem; color: var(--text-dim); }
+        .stat-trend { color: #00ff88; font-size: 0.8rem; }
+
+        .btn-primary {
+            background: var(--accent-red);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        /* --- PAGE VIEWS --- */
+        .page-view { display: none; }
+        .page-view.active { display: block; }
+
+        /* --- ANALYTICS SPECIFIC --- */
+        .heatmap {
+            height: 200px;
+            background: linear-gradient(90deg, #1a1a1a 0%, #301015 50%, #e21d38 100%);
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        /* --- MOBILE NAV --- */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: var(--bg-sidebar);
+            border-top: 1px solid var(--border);
+            justify-content: space-around;
+            padding: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .search-bar { width: 150px; }
+            .grid-3, .grid-2-1 { grid-template-columns: 1fr; }
+            .mobile-nav { display: flex; }
+            body { padding-bottom: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo-area">PATTERN<span>X</span></div>
+        
+        <nav class="nav-group">
+            <div class="nav-label">Core Engine</div>
+            <a href="#" class="nav-item active" onclick="showPage('home')"><i class="fa-solid fa-house"></i> Homepage</a>
+            <a href="#" class="nav-item" onclick="showPage('analytics')"><i class="fa-solid fa-chart-line"></i> Analytics</a>
+            <a href="#" class="nav-item" onclick="showPage('intelligence')"><i class="fa-solid fa-brain"></i> Intelligence</a>
+        </nav>
+
+        <nav class="nav-group">
+            <div class="nav-label">Management</div>
+            <a href="#" class="nav-item" onclick="showPage('archive')"><i class="fa-solid fa-box-archive"></i> Archive</a>
+            <a href="#" class="nav-item" onclick="showPage('cases')"><i class="fa-solid fa-folder-open"></i> Case Files</a>
+        </nav>
+
+        <nav class="nav-group" style="margin-top: auto;">
+            <a href="#" class="nav-item" onclick="showPage('help')"><i class="fa-solid fa-circle-question"></i> Help Guide</a>
+            <a href="#" class="nav-item" onclick="showPage('support')"><i class="fa-solid fa-headset"></i> Support</a>
+        </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main-wrapper">
+        <header>
+            <div class="search-bar">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Query entities, cases, or precincts...">
+            </div>
+            <div class="header-actions">
+                <i class="fa-solid fa-bell"></i>
+                <i class="fa-solid fa-gear"></i>
+                <div style="width: 32px; height: 32px; background: #333; border-radius: 50%; border: 1px solid var(--accent-red);"></div>
+            </div>
+        </header>
+
+        <div class="content-body">
+            
+            <!-- HOME PAGE -->
+            <section id="home" class="page-view active">
+                <h1 style="font-size: 2.5rem; margin-bottom: 10px;">Evidence-Based <span style="color: var(--accent-red)">Criminology</span></h1>
+                <p style="color: var(--text-dim); margin-bottom: 30px; max-width: 600px;">The definitive forensic intelligence platform. Engineered for empirical research, statistical modeling, and peer-reviewed methodology.</p>
+                
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div class="card-title">Live Engine Status <span style="color: #00ff88;">● ONLINE</span></div>
+                        <div class="stat-value">1,482</div>
+                        <div class="stat-label">Active Nodes / 1,500</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Processing Load</div>
+                        <div class="stat-value">24.8 <span style="font-size: 1rem">TeraFLOPS</span></div>
+                        <div class="stat-label">Neural Net Visualizer Active</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Pattern Recognition</div>
+                        <div class="stat-value" style="color: var(--accent-red)">Optimized</div>
+                        <div class="stat-label">v4.2.0 Active</div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 20px; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://via.placeholder.com/1200x400'); background-size: cover; height: 300px; display: flex; align-items: flex-end;">
+                    <div>
+                        <h2 style="margin-bottom: 10px;">Geospatial Incident Mapping</h2>
+                        <button class="btn-primary">View Module Details</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANALYTICS PAGE -->
+            <section id="analytics" class="page-view">
+                <h2 style="margin-bottom: 20px;">Longitudinal Crime Series Analysis</h2>
+                <div class="grid grid-2-1">
+                    <div class="card">
+                        <div class="card-title">Aggregated 5-Year Multi-Serial Data</div>
+                        <div style="height: 250px; display: flex; align-items: flex-end; gap: 10px;">
+                            <div style="flex: 1; background: #333; height: 40%;"></div>
+                            <div style="flex: 1; background: #444; height: 60%;"></div>
+                            <div style="flex: 1; background: #555; height: 75%;"></div>
+                            <div style="flex: 1; background: var(--accent-red-dim); height: 90%;"></div>
+                            <div style="flex: 1; background: var(--accent-red); height: 100%;"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.7rem; color: var(--text-dim);">
+                            <span>2020</span><span>2021</span><span>2022</span><span>2023</span><span>2024 (Q1)</span>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="card">
+                            <div class="card-title">Statistical Anomaly</div>
+                            <div class="stat-value" style="color: var(--accent-red);">Z: +3.42</div>
+                            <div class="stat-label">Critical frequency threshold exceeded in Precinct 09.</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-title">Solve Rate (AVG)</div>
+                            <div class="stat-value">68.2%</div>
+                            <div style="width: 100%; height: 4px; background: #333; margin-top: 10px;">
+                                <div style="width: 68%; height: 100%; background: var(--accent-red);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- INTELLIGENCE PAGE -->
+            <section id="intelligence" class="page-view">
+                <h2 style="margin-bottom: 20px;">Predictive Modeling & Risk Forecasting</h2>
+                <div class="card" style="border-left: 4px solid var(--accent-red); margin-bottom: 20px;">
+                    <div class="card-title">High Probability Detected <span style="font-family: var(--font-mono)">p < 0.001</span></div>
+                    <h3>Systematic Burglary Cluster: Sector 7</h3>
+                    <p style="margin-top: 10px; color: var(--text-dim);">Cross-referenced 15% drop in street illumination with historical forced entry patterns. Anomaly Index: <span style="color: var(--accent-red)">+12.4%</span></p>
+                    <button class="btn-primary" style="margin-top: 15px;">Deploy Protocol</button>
+                </div>
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div class="card-title">Signal Interference</div>
+                        <div class="stat-value">04:32</div>
+                        <div class="stat-label">Forecasted Anomaly</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Node Re-routing</div>
+                        <div class="stat-value">05:15</div>
+                        <div class="stat-label">Expected Event</div>
+                    </div>
+                    <div class="card">
+                        <div class="card-title">Perimeter Breach</div>
+                        <div class="stat-value" style="color: var(--accent-red)">06:00</div>
+                        <div class="stat-label">High Risk Warning</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HELP/USER GUIDE -->
+            <section id="help" class="page-view">
+                <h2 style="margin-bottom: 20px;">Knowledge Base & User Systems</h2>
+                <div class="grid grid-3">
+                    <div class="card">
+                        <i class="fa-solid fa-rocket" style="font-size: 2rem; color: var(--accent-red); margin-bottom: 15px;"></i>
+                        <h3>Getting Started</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">Initialize your analytical environment and configure secure data nodes.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-shield-halved" style="font-size: 2rem; color: var(--accent-red); margin-bottom: 15px;"></i>
+                        <h3>Methodology</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">Adherence to NIBRS standards and peer-reviewed weighting algorithms.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-book" style="font-size: 2rem; color: var(--accent-red); margin-bottom: 15px;"></i>
+                        <h3>API Docs</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-dim); margin-top: 10px;">Integrate PatternX telemetry directly into your precinct CAD systems.</p>
+                    </div>
+                </div>
+            </section>
+
+             <!-- PLACEHOLDERS FOR REMAINING -->
+             <section id="archive" class="page-view"><h2>Forensic Archive</h2><p>Browsing historical case telemetry...</p></section>
+             <section id="cases" class="page-view"><h2>Case Files</h2><p>Secure Vault Access: Red Line Crew MO...</p></section>
+             <section id="support" class="page-view"><h2>Contact Support</h2><p>Open a priority forensic ticket...</p></section>
+
+        </div>
+    </div>
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="mobile-nav">
+        <div onclick="showPage('home')"><i class="fa-solid fa-house"></i></div>
+        <div onclick="showPage('analytics')"><i class="fa-solid fa-chart-line"></i></div>
+        <div onclick="showPage('intelligence')"><i class="fa-solid fa-brain"></i></div>
+        <div onclick="showPage('archive')"><i class="fa-solid fa-box-archive"></i></div>
+    </nav>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-view').forEach(page => {
+                page.classList.remove('active');
+            });
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+
+            // Update Nav Item styles
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if(item.innerText.toLowerCase().includes(pageId)) {
+                    item.classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
