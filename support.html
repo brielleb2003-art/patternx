@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Support | PATTERNX</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar same as index.html -->
+    <aside class="sidebar">
+        <div class="brand">PATTERN<span>X</span></div>
+        <nav class="nav-section">
+            <div class="nav-label">Analysis</div>
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-gauge"></i> <span>Dashboard</span></a>
+            <a href="analytics.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> <span>Analytics</span></a>
+            <a href="intelligence.html" class="nav-link"><i class="fa-solid fa-brain"></i> <span>Intelligence</span></a>
+            <div class="nav-label" style="margin-top:20px">Records</div>
+            <a href="archive.html" class="nav-link"><i class="fa-solid fa-box-archive"></i> <span>Case Archive</span></a>
+            <div class="nav-label" style="margin-top:20px">Resources</div>
+            <a href="help.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> <span>User Guide</span></a>
+            <a href="support.html" class="nav-link"><i class="fa-solid fa-headset"></i> <span>Support</span></a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <header><div class="status-indicator">24/7 TECHNICAL OPS ACTIVE</div></header>
+        <div class="container">
+            <h1>Technical <span style="color:var(--accent)">Support</span></h1>
+            <p class="subtitle">Open a priority forensic ticket for system anomalies.</p>
+            <div class="card" style="max-width: 600px;">
+                <form onsubmit="event.preventDefault(); alert('Ticket Submitted Successfully');">
+                    <div style="margin-bottom:20px">
+                        <label style="display:block; margin-bottom:10px; font-size:12px; color:var(--text-secondary);">ISSUE CATEGORY</label>
+                        <select style="width:100%; padding:12px; background:#000; border:1px solid var(--border); color:#fff;">
+                            <option>Data Sync Disruption</option>
+                            <option>Precision Mapping Error</option>
+                            <option>User Credentialing</option>
+                        </select>
+                    </div>
+                    <div style="margin-bottom:20px">
+                        <label style="display:block; margin-bottom:10px; font-size:12px; color:var(--text-secondary);">CASE ID (IF APPLICABLE)</label>
+                        <input type="text" style="width:100%; padding:12px; background:#000; border:1px solid var(--border); color:#fff;" placeholder="PX-0000">
+                    </div>
+                    <button type="submit" class="btn">Open Support Ticket</button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

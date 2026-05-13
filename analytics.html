@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><title>Analytics | PATTERNX</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar same as index.html -->
+    <aside class="sidebar">
+        <div class="brand">PATTERN<span>X</span></div>
+        <nav class="nav-section">
+            <div class="nav-label">Analysis</div>
+            <a href="index.html" class="nav-link"><i class="fa-solid fa-gauge"></i> <span>Dashboard</span></a>
+            <a href="analytics.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> <span>Analytics</span></a>
+            <a href="intelligence.html" class="nav-link"><i class="fa-solid fa-brain"></i> <span>Intelligence</span></a>
+            <div class="nav-label" style="margin-top:20px">Records</div>
+            <a href="archive.html" class="nav-link"><i class="fa-solid fa-box-archive"></i> <span>Case Archive</span></a>
+            <div class="nav-label" style="margin-top:20px">Resources</div>
+            <a href="help.html" class="nav-link"><i class="fa-solid fa-circle-info"></i> <span>User Guide</span></a>
+            <a href="support.html" class="nav-link"><i class="fa-solid fa-headset"></i> <span>Support</span></a>
+        </nav>
+    </aside>
+    <main class="main-content">
+        <header>
+            <div class="search-box"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Analyze precinct codes..."></div>
+            <div class="status-indicator">UCR/NIBRS COMPLIANT</div>
+        </header>
+        <div class="container">
+            <h1>Longitudinal <span style="color:var(--accent)">Crime Series</span></h1>
+            <p class="subtitle">Advanced cross-precinct trend visualizations and multi-serial data (FY 2019-2024).</p>
+            <div class="grid cols-2">
+                <div class="card">
+                    <span class="card-tag">Aggregated 5-Year Data</span>
+                    <div style="height:250px; display:flex; align-items:flex-end; gap:10px; padding-bottom:20px;">
+                        <div style="flex:1; height:40%; background:#222;"></div>
+                        <div style="flex:1; height:60%; background:#333;"></div>
+                        <div style="flex:1; height:55%; background:#444;"></div>
+                        <div style="flex:1; height:85%; background:var(--accent-dim);"></div>
+                        <div style="flex:1; height:100%; background:var(--accent);"></div>
+                    </div>
+                </div>
+                <div style="display:grid; gap:24px;">
+                    <div class="card"><span class="card-tag">Statistical Anomaly</span><div class="stat" style="color:var(--accent)">Z: +3.42</div><p>Critical threshold exceeded in Precinct 09.</p></div>
+                    <div class="card"><span class="card-tag">Clearance Rate</span><div class="stat">74.2%</div><p>Target: 80% Performance Index</p></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
