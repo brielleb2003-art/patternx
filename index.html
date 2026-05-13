@@ -1,1 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <title>PATTERNX Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <img src="./logo.PNG"
+            alt="PATTERNX"
+            style="
+            width:120px;
+            height:auto;
+            display:block;
+            margin:10px auto 20px auto;
+            ">
+
+        </div>
+
+        <nav class="nav-section">
+
+            <div class="nav-label">ANALYSIS</div>
+
+            <a href="index.html"
+            class="nav-link active">
+
+                <i class="fa-solid fa-gauge"></i>
+                <span>Dashboard</span>
+
+            </a>
+
+            <a href="analytics.html"
+            class="nav-link">
+
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Analytics</span>
+
+            </a>
+
+            <a href="intelligence.html"
+            class="nav-link">
+
+                <i class="fa-solid fa-brain"></i>
+                <span>Intelligence</span>
+
+            </a>
+
+            <div class="nav-label"
+            style="margin-top:20px;">
+
+                RECORDS
+
+            </div>
+
+            <a href="archive.html"
+            class="nav-link">
+
+                <i class="fa-solid fa-box-archive"></i>
+                <span>Case Archive</span>
+
+            </a>
+
+            <div class="nav-label"
+            style="margin-top:20px;">
+
+                RESOURCES
+
+            </div>
+
+            <a href="help.html"
+            class="nav-link">
+
+                <i class="fa-solid fa-circle-info"></i>
+                <span>User Guide</span>
+
+            </a>
+
+            <a href="support.html"
+            class="nav-link">
+
+                <i class="fa-solid fa-headset"></i>
+                <span>Support</span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header>
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text"
+                placeholder="Search intelligence reports, incidents, or behavioral patterns...">
+
+            </div>
+
+            <div class="status-indicator">
+                SYSTEM ACTIVE
+            </div>
+
+        </header>
+
+        <!-- CONTENT -->
+
+        <div class="container">
+
+            <!-- TITLE -->
+
+            <h1>
+
+                Evidence-Based
+                <span style="color:var(--accent);">
+                    Crime Intelligence
+                </span>
+
+            </h1>
+
+            <p class="subtitle">
+
+                PATTERNX integrates predictive policing concepts,
+                behavioral forecasting, hotspot monitoring,
+                and intelligence-led analytical workflows.
+
+            </p>
+
+            <!-- TOP GRID -->
+
+            <div class="grid cols-3">
+
+                <!-- CARD -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Active Cases
+                    </span>
+
+                    <div class="stat">
+                        1,482
+                    </div>
+
+                    <p style="color:#22c55e;">
+                        +12% incident activity increase
+                    </p>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Threat Assessment
+                    </span>
+
+                    <div class="stat"
+                    style="color:var(--accent);">
+
+                        ELEVATED
+
+                    </div>
+
+                    <p>
+                        Increased patrol monitoring active
+                    </p>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        AI Confidence
+                    </span>
+
+                    <div class="stat">
+                        92%
+                    </div>
+
+                    <p>
+                        Predictive analysis confidence
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- MAIN FEATURE -->
+
+            <div class="card"
+            style="
+            margin-top:24px;
+            padding:32px;
+            ">
+
+                <span class="card-tag">
+                    Predictive Intelligence Summary
+                </span>
+
+                <h2 style="
+                margin-top:18px;
+                font-size:30px;
+                ">
+
+                    Repeat Burglary Pattern Detected
+
+                </h2>
+
+                <p style="
+                margin-top:16px;
+                color:var(--text-secondary);
+                line-height:1.8;
+                max-width:850px;
+                ">
+
+                    PATTERNX identified a recurring burglary
+                    pattern across multiple commercial corridors.
+                    Historical incident analysis indicates increased
+                    overnight activity associated with repeat offender
+                    behavior and reduced environmental visibility.
+
+                </p>
+
+                <div style="
+                display:flex;
+                gap:14px;
+                margin-top:24px;
+                flex-wrap:wrap;
+                ">
+
+                    <button class="btn"
+                    onclick="alert('Crime Pattern Report Generated')">
+
+                        Generate Report
+
+                    </button>
+
+                    <button class="btn"
+                    style="
+                    background:#1b1b20;
+                    border:1px solid var(--border);
+                    color:white;
+                    ">
+
+                        View Intelligence Brief
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- SECOND GRID -->
+
+            <div class="grid cols-2"
+            style="margin-top:24px;">
+
+                <!-- LIVE FEED -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Live Intelligence Feed
+                    </span>
+
+                    <div style="
+                    margin-top:20px;
+                    display:grid;
+                    gap:18px;
+                    ">
+
+                        <div style="
+                        border-left:3px solid var(--accent);
+                        padding-left:14px;
+                        ">
+
+                            <strong>
+                                Burglary spike detected — Sector 12
+                            </strong>
+
+                            <p style="
+                            margin-top:6px;
+                            color:var(--text-secondary);
+                            ">
+
+                                Activity increased by 18%.
+
+                            </p>
+
+                        </div>
+
+                        <div style="
+                        border-left:3px solid orange;
+                        padding-left:14px;
+                        ">
+
+                            <strong>
+                                Patrol deployment updated
+                            </strong>
+
+                            <p style="
+                            margin-top:6px;
+                            color:var(--text-secondary);
+                            ">
+
+                                Additional monitoring units assigned.
+
+                            </p>
+
+                        </div>
+
+                        <div style="
+                        border-left:3px solid #22c55e;
+                        padding-left:14px;
+                        ">
+
+                            <strong>
+                                Behavioral match confirmed
+                            </strong>
+
+                            <p style="
+                            margin-top:6px;
+                            color:var(--text-secondary);
+                            ">
+
+                                Pattern recognition linked
+                                multiple repeat incidents.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ANALYST -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Analyst Profile
+                    </span>
+
+                    <div class="stat">
+                        B. Bullingor
+                    </div>
+
+                    <p>
+                        Intelligence Analysis Unit
+                    </p>
+
+                    <p style="
+                    margin-top:14px;
+                    color:var(--text-secondary);
+                    ">
+
+                        Clearance Level: III
+
+                    </p>
+
+                    <p style="
+                    margin-top:8px;
+                    color:var(--text-secondary);
+                    ">
+
+                        Shift Status: ACTIVE
+
+                    </p>
+
+                    <p style="
+                    margin-top:8px;
+                    color:var(--text-secondary);
+                    ">
+
+                        Monitoring Region: Sector 12
+
+                    </p>
+
+                    <button class="btn"
+                    style="margin-top:20px;"
+                    onclick="alert('Session Verified')">
+
+                        View Analyst Session
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- BOTTOM GRID -->
+
+            <div class="grid cols-3"
+            style="margin-top:24px; margin-bottom:40px;">
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        High-Risk Zones
+                    </span>
+
+                    <div class="stat"
+                    style="color:var(--accent);">
+
+                        12
+
+                    </div>
+
+                    <p>
+                        Active hotspot sectors
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Clearance Rate
+                    </span>
+
+                    <div class="stat">
+                        74%
+                    </div>
+
+                    <p>
+                        Department target: 80%
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        System Monitoring
+                    </span>
+
+                    <p style="margin-top:18px;">
+                        ● Predictive Engine: ACTIVE
+                    </p>
+
+                    <p>
+                        ● Archive Database: ONLINE
+                    </p>
+
+                    <p>
+                        ● Intelligence Sync: STABLE
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
