@@ -1,1 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <title>PATTERNX Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <img src="logo.png"
+            alt="PATTERNX Logo"
+            style="
+            width:170px;
+            height:auto;
+            display:block;
+            margin:auto;
+            ">
+
+        </div>
+
+        <nav class="nav-section">
+
+            <div class="nav-label">Analysis</div>
+
+            <a href="index.html"
+            class="nav-link"
+            style="background:#1b1b20; border-left:3px solid var(--accent); color:white;">
+
+                <i class="fa-solid fa-gauge"></i>
+                <span>Dashboard</span>
+
+            </a>
+
+            <a href="analytics.html" class="nav-link">
+
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Analytics</span>
+
+            </a>
+
+            <a href="intelligence.html" class="nav-link">
+
+                <i class="fa-solid fa-brain"></i>
+                <span>Intelligence</span>
+
+            </a>
+
+            <div class="nav-label" style="margin-top:20px;">
+                Records
+            </div>
+
+            <a href="archive.html" class="nav-link">
+
+                <i class="fa-solid fa-box-archive"></i>
+                <span>Case Archive</span>
+
+            </a>
+
+            <div class="nav-label" style="margin-top:20px;">
+                Resources
+            </div>
+
+            <a href="help.html" class="nav-link">
+
+                <i class="fa-solid fa-circle-info"></i>
+                <span>User Guide</span>
+
+            </a>
+
+            <a href="support.html" class="nav-link">
+
+                <i class="fa-solid fa-headset"></i>
+                <span>Support</span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header>
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input type="text"
+                placeholder="Search incidents, cases, or intelligence reports...">
+
+            </div>
+
+            <div class="status-indicator">
+                SYSTEM ACTIVE
+            </div>
+
+        </header>
+
+        <!-- CONTENT -->
+
+        <div class="container">
+
+            <!-- TITLE -->
+
+            <h1>
+                Evidence-Based
+                <span style="color:var(--accent)">
+                    Crime Intelligence
+                </span>
+            </h1>
+
+            <p class="subtitle">
+
+                PATTERNX integrates predictive policing concepts,
+                hotspot analysis, behavioral intelligence workflows,
+                and evidence-based criminology methodologies into a
+                centralized analytical command platform.
+
+            </p>
+
+            <!-- TOP GRID -->
+
+            <div class="grid cols-3">
+
+                <!-- CARD -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Active Incident Reports
+                    </span>
+
+                    <div class="stat">
+                        1,482
+                    </div>
+
+                    <p style="color:var(--success);">
+                        +12% increase from previous month
+                    </p>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Threat Assessment
+                    </span>
+
+                    <div class="stat"
+                    style="color:var(--accent);">
+
+                        ELEVATED
+
+                    </div>
+
+                    <p>
+                        Increased monitoring recommended
+                    </p>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        AI Confidence Score
+                    </span>
+
+                    <div class="stat">
+                        92%
+                    </div>
+
+                    <p>
+                        Predictive intelligence confidence
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- MAP -->
+
+            <div class="card"
+            style="margin-top:24px; overflow:hidden;">
+
+                <span class="card-tag">
+                    Real-Time Hotspot Monitoring
+                </span>
+
+                <div style="
+                position:relative;
+                height:360px;
+                margin-top:20px;
+                border-radius:14px;
+                overflow:hidden;
+                ">
+
+                    <img
+                    src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1200&q=80"
+
+                    style="
+                    width:100%;
+                    height:100%;
+                    object-fit:cover;
+                    filter:brightness(0.45);
+                    ">
+
+                    <!-- HOTSPOTS -->
+
+                    <div style="
+                    position:absolute;
+                    top:30%;
+                    left:42%;
+                    width:16px;
+                    height:16px;
+                    background:red;
+                    border-radius:50%;
+                    box-shadow:0 0 25px red;
+                    "></div>
+
+                    <div style="
+                    position:absolute;
+                    top:55%;
+                    left:65%;
+                    width:16px;
+                    height:16px;
+                    background:orange;
+                    border-radius:50%;
+                    box-shadow:0 0 25px orange;
+                    "></div>
+
+                    <div style="
+                    position:absolute;
+                    top:42%;
+                    left:73%;
+                    width:16px;
+                    height:16px;
+                    background:red;
+                    border-radius:50%;
+                    box-shadow:0 0 25px red;
+                    "></div>
+
+                    <!-- OVERLAY -->
+
+                    <div style="
+                    position:absolute;
+                    bottom:20px;
+                    left:20px;
+                    background:rgba(0,0,0,0.78);
+                    padding:18px;
+                    border-radius:12px;
+                    max-width:340px;
+                    ">
+
+                        <h3 style="margin-bottom:10px;">
+                            Crime Hotspot Overview
+                        </h3>
+
+                        <p style="
+                        color:var(--text-secondary);
+                        line-height:1.7;
+                        font-size:14px;
+                        ">
+
+                            Interactive monitoring of burglary,
+                            theft, assault, and repeat offender
+                            activity across identified patrol sectors.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- SECOND GRID -->
+
+            <div class="grid cols-2"
+            style="margin-top:24px;">
+
+                <!-- LIVE FEED -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Live Intelligence Feed
+                    </span>
+
+                    <div style="
+                    margin-top:20px;
+                    display:grid;
+                    gap:18px;
+                    ">
+
+                        <div style="
+                        border-left:3px solid var(--accent);
+                        padding-left:14px;
+                        ">
+
+                            <strong>
+                                Burglary spike detected — Sector 12
+                            </strong>
+
+                            <p style="
+                            margin-top:6px;
+                            color:var(--text-secondary);
+                            ">
+
+                                Incident frequency increased by 18%.
+
+                            </p>
+
+                        </div>
+
+                        <div style="
+                        border-left:3px solid orange;
+                        padding-left:14px;
+                        ">
+
+                            <strong>
+                                Patrol deployment updated
+                            </strong>
+
+                            <p style="
+                            margin-top:6px;
+                            color:var(--text-secondary);
+                            ">
+
+                                Resource allocation adjusted
+                                for hotspot density.
+
+                            </p>
+
+                        </div>
+
+                        <div style="
+                        border-left:3px solid #22c55e;
+                        padding-left:14px;
+                        ">
+
+                            <strong>
+                                Behavioral match confirmed
+                            </strong>
+
+                            <p style="
+                            margin-top:6px;
+                            color:var(--text-secondary);
+                            ">
+
+                                Pattern recognition linked
+                                three repeat incidents.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ANALYST PANEL -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Analyst Information
+                    </span>
+
+                    <div class="stat">
+                        B. Bullingor
+                    </div>
+
+                    <p>
+                        Intelligence Analysis Unit
+                    </p>
+
+                    <p style="
+                    margin-top:14px;
+                    color:var(--text-secondary);
+                    ">
+
+                        Clearance Level: III
+
+                    </p>
+
+                    <p style="
+                    margin-top:8px;
+                    color:var(--text-secondary);
+                    ">
+
+                        Shift Status: ACTIVE
+
+                    </p>
+
+                    <button class="btn"
+                    onclick="alert('Analyst Session Active')">
+
+                        View Session
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- BOTTOM GRID -->
+
+            <div class="grid cols-3"
+            style="margin-top:24px;">
+
+                <!-- CARD -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        System Monitoring
+                    </span>
+
+                    <p style="margin-top:16px;">
+                        ● Predictive Engine: ACTIVE
+                    </p>
+
+                    <p>
+                        ● Archive Database: ONLINE
+                    </p>
+
+                    <p>
+                        ● GIS Mapping: SYNCHRONIZED
+                    </p>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        Clearance Rate
+                    </span>
+
+                    <div class="stat">
+                        74%
+                    </div>
+
+                    <p>
+                        Department goal: 80%
+                    </p>
+
+                </div>
+
+                <!-- CARD -->
+
+                <div class="card">
+
+                    <span class="card-tag">
+                        High-Risk Zones
+                    </span>
+
+                    <div class="stat"
+                    style="color:var(--accent);">
+
+                        12
+
+                    </div>
+
+                    <p>
+                        Areas flagged for increased patrol
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
