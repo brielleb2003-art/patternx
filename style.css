@@ -25,7 +25,6 @@ body {
     font-family: Arial, sans-serif;
     display: flex;
     min-height: 100vh;
-    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -86,7 +85,7 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column;
-    min-width: 0;
+    overflow-y: auto;
 }
 
 /* HEADER */
