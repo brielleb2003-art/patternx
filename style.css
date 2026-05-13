@@ -100,7 +100,7 @@ header {
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 10px 14px;
-    width: 400px;
+    width: 300px;
     display: flex;
     align-items: center;
 }
